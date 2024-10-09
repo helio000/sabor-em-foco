@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Motoboy - Sabor em Foco</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 400px; 
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .link-container {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Motoboy</h2>
+
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" placeholder="Seu Nome" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="text" id="phone" placeholder="Seu Telefone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Seu E-mail" required>
+        </div>
+        <div class="form-group">
+            <label for="plate">Placa da Moto</label>
+            <input type="text" id="plate" placeholder="Placa da Moto" required>
+        </div>
+        <button type="button" onclick="registerMotoboy()">Cadastrar</button>
+    </form>
+
+    <div class="link-container">
+        <a href="regras.html" style="color: #ff0000; text-decoration: none;">Ver Regras e Requisitos</a>
+    </div>
+
+    <script>
+        function registerMotoboy() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const plate = document.getElementById('plate').value;
+
+            if (!name || !phone || !email || !plate) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            alert(`Motoboy cadastrado com sucesso!\nNome: ${name}\nTelefone: ${phone}\nE-mail: ${email}\nPlaca: ${plate}`);
+            document.getElementById('registrationForm').reset(); 
+        }
+    </script>
+</body>
+</html>

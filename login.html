@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Sabor em Foco</title>
+    <style>
+        body {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .enter-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .enter-button:hover {
+            background-color: #45a049;
+        }
+
+        .register-button {
+            background-color: #f44336; 
+            color: white;
+            margin-top: 10px; 
+        }
+
+        .register-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit" class="enter-button">Entrar</button>
+    </form>
+
+    <div class="link-container">
+        <button class="register-button" onclick="window.location.href='moto boy.html'">Cadastrar como Motoboy</button>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            window.location.href = 'cardapio.html'; 
+        });
+    </script>
+</body>
+</html>

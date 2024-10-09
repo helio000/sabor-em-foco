@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardápio - Sabor em Foco</title>
+    <style>
+        body {
+            background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: black;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px auto;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .menu {
+            text-align: center;
+            margin: 20px auto;
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            text-decoration: underline;
+        }
+
+        .review {
+            text-align: center;
+            margin: 20px auto;
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .review-item {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="_6d3a916d-53e0-495e-8648-269f7d326c4e.jfif" alt="Logo Sabor em Foco" class="logo">
+
+    <h2>Cardápio</h2>
+    <button onclick="showMenu('breakfast')">Café da Manhã</button>
+    <button onclick="showMenu('lunch')">Almoço</button>
+    <button onclick="showMenu('dinner')">Jantar</button>
+    <button onclick="showReview()">Revisar Pedido</button>
+
+    <div id="breakfast" class="menu" style="display:none;">
+        <h3>Café da Manhã</h3>
+        <ul>
+            <li onclick="addToOrder('Pão na Chapa', '5.00')">Pão na Chapa - R$ 5,00</li>
+            <li onclick="addToOrder('Café Preto', '3.00')">Café Preto - R$ 3,00</li>
+            <li onclick="addToOrder('Croissant', '7.00')">Croissant - R$ 7,00</li>
+            <li onclick="addToOrder('Suco de Laranja', '4.00')">Suco de Laranja - R$ 4,00</li>
+            <li onclick="addToOrder('Panquecas com Mel', '9.00')">Panquecas com Mel - R$ 9,00</li>
+            <li onclick="addToOrder('Muffin de Blueberry', '6.00')">Muffin de Blueberry - R$ 6,00</li>
+        </ul>
+    </div>
+
+    <div id="lunch" class="menu" style="display:none;">
+        <h3>Almoço</h3>
+        <ul>
+            <li onclick="addToOrder('Picadinho de Carne', '104.50')">Picadinho de Carne - R$ 104,50</li>
+            <li onclick="addToOrder('Frango Grelhado', '25.00')">Frango Grelhado - R$ 25,00</li>
+            <li onclick="addToOrder('Feijoada', '40.00')">Feijoada - R$ 40,00</li>
+            <li onclick="addToOrder('Bife à Parmegiana', '35.00')">Bife à Parmegiana - R$ 35,00</li>
+            <li onclick="addToOrder('Espaguete à Bolonhesa', '30.00')">Espaguete à Bolonhesa - R$ 30,00</li>
+            <li onclick="addToOrder('Salmão Grelhado', '55.00')">Salmão Grelhado - R$ 55,00</li>
+        </ul>
+    </div>
+
+    <div id="dinner" class="menu" style="display:none;">
+        <h3>Jantar</h3>
+        <ul>
+            <li onclick="addToOrder('Picanha no Rechaud', '115.50')">Picanha no Rechaud - R$ 115,50</li>
+            <li onclick="addToOrder('Lasanha', '55.00')">Lasanha - R$ 55,00</li>
+            <li onclick="addToOrder('Risoto de Camarão', '70.00')">Risoto de Camarão - R$ 70,00</li>
+            <li onclick="addToOrder('Filet Mignon com Cogumelos', '130.00')">Filet Mignon com Cogumelos - R$ 130,00</li>
+            <li onclick="addToOrder('Canelone de Ricota', '50.00')">Canelone de Ricota - R$ 50,00</li>
+            <li onclick="addToOrder('Tábua de Frios', '75.00')">Tábua de Frios - R$ 75,00</li>
+        </ul>
+    </div>
+
+    <div id="review" class="review" style="display:none;">
+        <h3>Revisão do Pedido</h3>
+        <div id="order-summary"></div>
+        <button onclick="proceedToPayment()">Continuar para Pagamento</button>
+    </div>
+
+    <script>
+        let order = [];
+
+        function showMenu(menuType) {
+            var menus = document.querySelectorAll('.menu');
+            menus.forEach(function(menu) {
+                menu.style.display = 'none';
+            });
+            document.getElementById(menuType).style.display = 'block';
+        }
+
+        function addToOrder(item, price) {
+            order.push({ item, price });
+            alert(`${item} adicionado ao pedido.`);
+        }
+
+        function showReview() {
+            const orderSummary = document.getElementById('order-summary');
+            orderSummary.innerHTML = '';
+
+            if (order.length === 0) {
+                orderSummary.innerHTML = '<p>Nenhum item adicionado ao pedido.</p>';
+                document.getElementById('review').style.display = 'block';
+                return;
+            }
+
+            let total = 0;
+            order.forEach(({ item, price }) => {
+                total += parseFloat(price);
+                const div = document.createElement('div');
+                div.classList.add('review-item');
+                div.textContent = `${item} - R$ ${price}`;
+                orderSummary.appendChild(div);
+            });
+
+            const totalDiv = document.createElement('div');
+            totalDiv.classList.add('review-item');
+            totalDiv.textContent = `Total: R$ ${total.toFixed(2)}`;
+            orderSummary.appendChild(totalDiv);
+
+            document.getElementById('review').style.display = 'block';
+        }
+
+        function proceedToPayment() {
+            window.location.href = 'pagamento.html'; 
+        }
+    </script>
+</body>
+</html>

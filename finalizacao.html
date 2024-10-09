@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalização - Sabor em Foco</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .finalization-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .button-contact {
+            background-color: #FF5722;
+        }
+
+        .button-contact:hover {
+            background-color: #E64A19;
+        }
+
+        .contact-info {
+            display: none;
+            text-align: left;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .credits {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="finalization-container">
+        <h2>Pedido Finalizado</h2>
+        <p>Obrigado por comprar conosco! Seu pedido foi realizado com sucesso.</p>
+
+        <button class="button" onclick="goToMenu()">Voltar ao Cardápio</button>
+        <button class="button button-contact" onclick="toggleContactInfo()">Entrar em Contato</button>
+
+        <div class="contact-info" id="contact-info">
+            <p>Instagram: <a href="https://www.instagram.com/sabor_em_foco.ofc?utm_source=qr&igsh=c3g3em53ZjliYW10" target="_blank">sabor_em_foco.of</a></p>
+            <p>Telefone: (19) 99922-3952</p>
+        </div>
+
+        <div class="credits">
+            <p>Créditos: Hélio, Lais e Leonardo</p>
+        </div>
+    </div>
+
+    <script>
+        function goToMenu() {
+            window.location.href = 'cardapio.html'; 
+        }
+
+        function toggleContactInfo() {
+            const contactInfo = document.getElementById('contact-info');
+            contactInfo.style.display = contactInfo.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
