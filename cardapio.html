@@ -1,181 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Cardápio - Sabor em Foco</title>
-    <style>
-        body {
-            background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: black;
-        }
-
-        .logo {
-            display: block;
-            margin: 0 auto;
-            max-width: 150px;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        button {
-            display: block;
-            width: 200px;
-            padding: 10px;
-            margin: 10px auto;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .menu {
-            text-align: center;
-            margin: 20px auto;
-            width: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin: 8px 0;
-            cursor: pointer;
-        }
-
-        ul li:hover {
-            text-decoration: underline;
-        }
-
-        .review {
-            text-align: center;
-            margin: 20px auto;
-            width: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .review-item {
-            margin: 8px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio - Sabor em Foco</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-image: url('https://www.freevector.com/uploads/vector/preview/28194/Mexican_Cantina_vector_2.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+    .hidden { display: none; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    .btn { margin: 5px; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    .btn:hover { background-color: #218838; }
+    #review { margin-top: 20px; }
+  </style>
 </head>
 <body>
-    <img src="_6d3a916d-53e0-495e-8648-269f7d326c4e.jfif" alt="Logo Sabor em Foco" class="logo">
+  <div class="menu-container">
+    <fieldset>
+      <button class="btn" onclick="showMenu('breakfast')">Café da Manhã</button>
+      <button class="btn" onclick="showMenu('lunch')">Almoço</button>
+      <button class="btn" onclick="showMenu('dinner')">Jantar</button>
+    </fieldset>
 
-    <h2>Cardápio</h2>
-    <button onclick="showMenu('breakfast')">Café da Manhã</button>
-    <button onclick="showMenu('lunch')">Almoço</button>
-    <button onclick="showMenu('dinner')">Jantar</button>
-    <button onclick="showReview()">Revisar Pedido</button>
+    <div class="grid">
+      <!-- Café da Manhã -->
+      <article class="card breakfast hidden">
+        <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgs7uGjZ996tygM3fS3TOfj6bWmwQKtB5C1g&s" alt="Pão com Manteiga">
+        <div class="content">
+          <h2>Pão com Manteiga</h2>
+          <p>Delicioso pão francês com manteiga fresquinha.</p>
+          <button class="btn" onclick="addToOrder('Pão com Manteiga', 5.00)">Adicionar - R$ 5.00</button>
+        </div>
+      </article>
 
-    <div id="breakfast" class="menu" style="display:none;">
-        <h3>Café da Manhã</h3>
-        <ul>
-            <li onclick="addToOrder('Pão na Chapa', '5.00')">Pão na Chapa - R$ 5,00</li>
-            <li onclick="addToOrder('Café Preto', '3.00')">Café Preto - R$ 3,00</li>
-            <li onclick="addToOrder('Croissant', '7.00')">Croissant - R$ 7,00</li>
-            <li onclick="addToOrder('Suco de Laranja', '4.00')">Suco de Laranja - R$ 4,00</li>
-            <li onclick="addToOrder('Panquecas com Mel', '9.00')">Panquecas com Mel - R$ 9,00</li>
-            <li onclick="addToOrder('Muffin de Blueberry', '6.00')">Muffin de Blueberry - R$ 6,00</li>
-        </ul>
-    </div>
+      <article class="card breakfast hidden">
+        <img class="image" src="https://meiraisraelcom.wordpress.com/wp-content/uploads/2018/01/maxresdefault.jpg?w=740&h=463" alt="Café Preto">
+        <div class="content">
+          <h2>Café Preto</h2>
+          <p>O clássico café preto para começar bem o dia.</p>
+          <button class="btn" onclick="addToOrder('Café Preto', 4.50)">Adicionar - R$ 4.50</button>
+        </div>
+      </article>
 
-    <div id="lunch" class="menu" style="display:none;">
-        <h3>Almoço</h3>
-        <ul>
-            <li onclick="addToOrder('Picadinho de Carne', '104.50')">Picadinho de Carne - R$ 104,50</li>
-            <li onclick="addToOrder('Frango Grelhado', '25.00')">Frango Grelhado - R$ 25,00</li>
-            <li onclick="addToOrder('Feijoada', '40.00')">Feijoada - R$ 40,00</li>
-            <li onclick="addToOrder('Bife à Parmegiana', '35.00')">Bife à Parmegiana - R$ 35,00</li>
-            <li onclick="addToOrder('Espaguete à Bolonhesa', '30.00')">Espaguete à Bolonhesa - R$ 30,00</li>
-            <li onclick="addToOrder('Salmão Grelhado', '55.00')">Salmão Grelhado - R$ 55,00</li>
-        </ul>
-    </div>
+      <article class="card breakfast hidden">
+        <img class="image" src="https://i0.wp.com/www.receitasqueamo.com.br/wp-content/uploads/2020/04/IMG_1578.jpg?w=700&ssl=1" alt="Pão de Forma">
+        <div class="content">
+          <h2>Pão de Forma</h2>
+          <p>Pão de forma macio e saboroso, perfeito para sanduíches.</p>
+          <button class="btn" onclick="addToOrder('Pão de Forma', 6.00)">Adicionar - R$ 6.00</button>
+        </div>
+      </article>
 
-    <div id="dinner" class="menu" style="display:none;">
-        <h3>Jantar</h3>
-        <ul>
-            <li onclick="addToOrder('Picanha no Rechaud', '115.50')">Picanha no Rechaud - R$ 115,50</li>
-            <li onclick="addToOrder('Lasanha', '55.00')">Lasanha - R$ 55,00</li>
-            <li onclick="addToOrder('Risoto de Camarão', '70.00')">Risoto de Camarão - R$ 70,00</li>
-            <li onclick="addToOrder('Filet Mignon com Cogumelos', '130.00')">Filet Mignon com Cogumelos - R$ 130,00</li>
-            <li onclick="addToOrder('Canelone de Ricota', '50.00')">Canelone de Ricota - R$ 50,00</li>
-            <li onclick="addToOrder('Tábua de Frios', '75.00')">Tábua de Frios - R$ 75,00</li>
-        </ul>
-    </div>
+      <article class="card breakfast hidden">
+        <img class="image" src="https://th.bing.com/th/id/OIP._WBnwLn4xPIl8JCh9T__IgHaE8?rs=1&pid=ImgDetMain" alt="Panquecas">
+        <div class="content">
+          <h2>Panquecas</h2>
+          <p>Deliciosas panquecas servidas com mel e frutas.</p>
+          <button class="btn" onclick="addToOrder('Panquecas', 12.00)">Adicionar - R$ 12.00</button>
+        </div>
+      </article>
 
-    <div id="review" class="review" style="display:none;">
-        <h3>Revisão do Pedido</h3>
+      <!-- Almoço -->
+      <article class="card lunch hidden">
+        <img class="image" src="https://dcdn.mitiendanube.com/stores/614/150/products/carne-assada-feijao-preto-couve-e-arroz11-16388a111a25c63a6715191891919130-640-0.webp" alt="Arroz com Feijão e Carne">
+        <div class="content">
+          <h2>Arroz com Feijão e Carne</h2>
+          <p>O prato tradicional com arroz, feijão e carne.</p>
+          <button class="btn" onclick="addToOrder('Arroz com Feijão e Carne', 20.00)">Adicionar - R$ 20.00</button>
+        </div>
+      </article>
+
+      <article class="card lunch hidden">
+        <img class="image" src="https://images.mrcook.app/recipe-image/0190e4da-bdab-74a8-9e02-c90f6a44d82f?cacheKey=V2VkLCAyNCBKdWwgMjAyNCAxMzowNzo0MiBHTVQ=" alt="Frango Grelhado">
+        <div class="content">
+          <h2>Frango Grelhado</h2>
+          <p>Frango grelhado com acompanhamento de salada.</p>
+          <button class="btn" onclick="addToOrder('Frango Grelhado', 22.00)">Adicionar - R$ 22.00</button>
+        </div>
+      </article>
+
+      <article class="card lunch hidden">
+        <img class="image" src="https://th.bing.com/th/id/R.280b24d329072ca319b02a09648548c9?rik=BWkYb7UK%2fm3h2Q&pid=ImgRaw&r=0" alt="Pizza">
+        <div class="content">
+          <h2>Pizza de Calabresa</h2>
+          <p>Deliciosa pizza de calabresa, feita com massa artesanal.</p>
+          <button class="btn" onclick="addToOrder('Pizza de Calabresa', 30.00)">Adicionar - R$ 30.00</button>
+        </div>
+      </article>
+
+      <!-- Jantar -->
+      <article class="card dinner hidden">
+        <img class="image" src="https://healthy.fr/wp-content/uploads/2024/05/Stir-fry-de-tofu-saute.png" alt="Stir Fry de Legumes">
+        <div class="content">
+          <h2>Stir Fry de Legumes</h2>
+          <p>Legumes frescos salteados com molho especial.</p>
+          <button class="btn" onclick="addToOrder('Stir Fry de Legumes', 15.00)">Adicionar - R$ 15.00</button>
+        </div>
+      </article>
+
+      <article class="card dinner hidden">
+        <img class="image" src="https://th.bing.com/th/id/OIP.ujPAdAAMq1H7SvIbSjznTgHaFB?rs=1&pid=ImgDetMain" alt="Peixe Grelhado">
+        <div class="content">
+          <h2>Peixe Grelhado</h2>
+          <p>Peixe grelhado, servido com legumes no vapor.</p>
+          <button class="btn" onclick="addToOrder('Peixe Grelhado', 35.00)">Adicionar - R$ 35.00</button>
+        </div>
+      </article>
+
+      <article class="card dinner hidden">
+        <img class="image" src="https://th.bing.com/th/id/OIP.6dTgce7qVOhfxP2xlhKhegHaFk?rs=1&pid=ImgDetMain" alt="Pasta ao Pesto">
+        <div class="content">
+          <h2>Pasta ao Pesto</h2>
+          <p>Pasta fresca com molho pesto e vegetais.</p>
+          <button class="btn" onclick="addToOrder('Pasta ao Pesto', 28.00)">Adicionar - R$ 28.00</button>
+        </div>
+      </article>
+
+      <!-- Resumo do Pedido -->
+      <div id="review" style="display:none;">
+        <h2>Resumo do Pedido</h2>
         <div id="order-summary"></div>
-        <button onclick="proceedToPayment()">Continuar para Pagamento</button>
+        <button class="btn" onclick="showTotal()">Mostrar Total</button>
+        <button class="btn" onclick="goToPayment()">Ir para Pagamento</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        let order = [];
+  <script>
+    const order = [];
 
-        function showMenu(menuType) {
-            var menus = document.querySelectorAll('.menu');
-            menus.forEach(function(menu) {
-                menu.style.display = 'none';
-            });
-            document.getElementById(menuType).style.display = 'block';
-        }
+    function showMenu(menuType) {
+      const allMenus = document.querySelectorAll('.card');
+      allMenus.forEach(menu => menu.classList.add('hidden'));
+      
+      const selectedMenus = document.querySelectorAll(`.${menuType}`);
+      selectedMenus.forEach(menu => menu.classList.remove('hidden'));
+    }
 
-        function addToOrder(item, price) {
-            order.push({ item, price });
-            alert(`${item} adicionado ao pedido.`);
-        }
+    function addToOrder(item, price) {
+      order.push({ item, price });
+      alert(`${item} adicionado ao pedido.`);
+      document.getElementById('review').style.display = 'block';
+      updateOrderSummary();
+    }
 
-        function showReview() {
-            const orderSummary = document.getElementById('order-summary');
-            orderSummary.innerHTML = '';
+    function updateOrderSummary() {
+      const summary = document.getElementById('order-summary');
+      summary.innerHTML = '';
+      order.forEach(({ item, price }) => {
+        const listItem = document.createElement('p');
+        listItem.textContent = `${item} - R$ ${price.toFixed(2)}`;
+        summary.appendChild(listItem);
+      });
+    }
 
-            if (order.length === 0) {
-                orderSummary.innerHTML = '<p>Nenhum item adicionado ao pedido.</p>';
-                document.getElementById('review').style.display = 'block';
-                return;
-            }
+    function showTotal() {
+      const total = order.reduce((acc, item) => acc + item.price, 0);
+      alert(`Total do pedido: R$ ${total.toFixed(2)}`);
+    }
 
-            let total = 0;
-            order.forEach(({ item, price }) => {
-                total += parseFloat(price);
-                const div = document.createElement('div');
-                div.classList.add('review-item');
-                div.textContent = `${item} - R$ ${price}`;
-                orderSummary.appendChild(div);
-            });
-
-            const totalDiv = document.createElement('div');
-            totalDiv.classList.add('review-item');
-            totalDiv.textContent = `Total: R$ ${total.toFixed(2)}`;
-            orderSummary.appendChild(totalDiv);
-
-            document.getElementById('review').style.display = 'block';
-        }
-
-        function proceedToPayment() {
-            window.location.href = 'pagamento.html'; 
-        }
-    </script>
+    function goToPayment() {
+      window.location.href = 'pagamento.html';
+    }
+  </script>
 </body>
 </html>
