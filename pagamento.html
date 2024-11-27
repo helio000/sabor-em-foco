@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="pix-info">
-            <p>Chave Pix: <span id="pixKey">123e4567-e89b-12d3-a456-426614174000</span></p>
+            <p>Chave Pix: <span id="pixKey">(19)99922-3952</span></p>
             <button onclick="copyPix()">Copiar Chave Pix</button>
         </div>
     </div>
@@ -135,12 +135,12 @@
 
             const paymentMethod = method === 'credit' ? 'Crédito' : 'Débito';
             alert(`Pagamento realizado com ${paymentMethod}. Seu pedido foi realizado com sucesso!`);
-            window.location.href = 'finalizacao.html';
+            window.location.href = 'final.html';
         }
 
         function pay(method) {
             if (method === 'pix') {
-                window.location.href = 'finalizacao.html';
+                window.location.href = 'final.html';
             } else {
                 alert('Método de pagamento não suportado.');
             }
@@ -157,3 +157,4 @@
     </script>
 </body>
 </html>
+
